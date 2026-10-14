@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vireo Sendero 2026 · tienda en línea</title>
+<meta name="description" content="Reserva el Vireo Sendero 2026, un suv compacto, y compara su precio con otros dos modelos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Silueta del vehículo (ilustración propia), se reutiliza con <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="auto" viewBox="0 0 400 160">
+    <path d="M16 112V92q0-14 18-18l56-8 46-32q10-6 24-6h98q14 0 26 10l42 32 38 8q16 4 16 20v14z" fill="currentColor"/>
+    <path d="M148 40h52v26h-78zM212 40h48l36 26h-84z" fill="var(--fondo)"/>
+    <circle cx="104" cy="116" r="28" fill="var(--fondo)" stroke="currentColor" stroke-width="10"/>
+    <circle cx="300" cy="116" r="28" fill="var(--fondo)" stroke="currentColor" stroke-width="10"/>
+  </symbol>
+</svg>
+
+<a class="salto" href="#vehiculo">ir al contenido</a>
+
+<header id="encabezado">
+  <a class="marca" href="#inicio">vireo</a>
+  <nav aria-label="secciones">
+    <a href="#vehiculo">vehículo</a>
+    <a href="#comparador">comparador</a>
+    <a href="#carrito">carrito</a>
+  </nav>
+  <button id="btnCarrito" class="btn-carrito" type="button" aria-label="ir al carrito">
+    carrito <span id="contador">0</span>
+  </button>
+</header>
+
+<main>
+  <section id="inicio" class="oscuro">
+    <p class="etiqueta">suv compacto · 2026</p>
+    <h1><span class="l">Un solo auto.</span><span class="l">Todas las rutas.</span></h1>
+    <p class="lead">El Sendero rinde más por cada galón y se maneja fácil en la ciudad.</p>
+    <div class="acciones">
+      <a class="btn" href="#vehiculo">Reservar</a>
+      <a class="btn btn-borde" href="#comparador">Comparar precios</a>
+    </div>
+    <svg class="ruta" viewBox="0 0 1200 120" role="img" aria-label="ilustración de una carretera con el vehículo">
+      <line x1="0" y1="100" x2="1200" y2="100" stroke="var(--acero)" stroke-width="4"/>
+      <line x1="0" y1="112" x2="1200" y2="112" stroke="var(--acento)" stroke-width="4" stroke-dasharray="40 28" class="rayas"/>
+      <g class="auto-ruta"><use href="#auto" x="0" y="0" width="300" height="120" style="color:var(--papel)"/></g>
+    </svg>
+  </section>
+
+  <div class="cinta" aria-hidden="true"><div class="cinta-in">
+    <span>reserva hoy · 5% con el cupón AUTO5 · compara con los suv más vendidos · hasta 5 unidades · </span>
+    <span>reserva hoy · 5% con el cupón AUTO5 · compara con los suv más vendidos · hasta 5 unidades · </span>
+  </div></div>
+
+  <section id="vehiculo" class="claro">
+    <h2>Vireo Sendero</h2>
+    <div class="dos">
+      <div>
+        <svg class="ilus" viewBox="0 0 400 160" role="img" aria-label="ilustración del suv Vireo Sendero"><use href="#auto" width="400" height="160"/></svg>
+        <p>Un suv compacto de cinco puestos, pensado para la ciudad y los viajes de fin de semana. Techo alto, cabina amplia y un consumo bajo.</p>
+        <p class="nota" id="notaEjemplo"></p>
+      </div>
+      <div>
+        <h3 id="tituloVersiones">Elige la versión</h3>
+        <div id="versiones" class="versiones" role="group" aria-labelledby="tituloVersiones"></div>
+        <p class="precio" id="precioVersion"></p>
+        <p id="fraseVersion"></p>
+        <dl class="ficha" id="fichaDatos"></dl>
+        <div class="barras">
+          <div><span>Potencia <b id="valPotencia"></b></span><div class="barra"><i id="barPotencia"></i></div></div>
+          <div><span>Eficiencia <b id="valEficiencia"></b></span><div class="barra"><i id="barEficiencia"></i></div></div>
+          <div><span>Espacio de carga <b id="valEspacio"></b></span><div class="barra"><i id="barEspacio"></i></div></div>
+        </div>
+        <div class="compra">
+          <label for="cantidad">Cantidad</label>
+          <select id="cantidad"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+          <button id="btnAnadir" class="btn" type="button">Añadir al carrito</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="comparador" class="oscuro">
+    <h2>Comparador de precios</h2>
+    <p>Comparamos la versión que elegiste con cuatro de los suv de gama media más vendidos en Colombia. El precio por caballo de fuerza ayuda a que la comparación sea justa.</p>
+    <div id="alertaBarata" class="alerta" role="alert" hidden></div>
+    <p class="estado" id="estadoComp" aria-live="polite">consultando precios…</p>
+    <div id="tarjetasComp" class="filas"></div>
+    <p class="nota" id="notaComp">Precios y potencias de los competidores: referencia aproximada, verifícala en el sitio oficial. Pueden cambiar y variar según la ciudad y el concesionario.</p>
+  </section>
+
+  <section id="carrito" class="claro">
+    <h2>Tu carrito</h2>
+    <div id="carritoVacio" hidden>
+      <p>Todavía no has añadido nada.</p>
+      <a class="btn" href="#vehiculo">Volver al vehículo</a>
+    </div>
+    <div id="carritoLleno" hidden>
+      <ul id="lineas" class="lineas"></ul>
+      <div class="cupon">
+        <label for="cupon">Cupón</label>
+        <input id="cupon" type="text" autocomplete="off">
+        <button id="btnCupon" class="btn btn-borde" type="button">Aplicar</button>
+      </div>
+      <p id="msgCupon" role="status"></p>
+      <p>Subtotal: <b id="subtotal"></b></p>
+      <p id="filaDescuento" hidden>Descuento (5%): <b id="descuento"></b></p>
+      <p class="total">Total: <b id="total"></b></p>
+      <div class="acciones">
+        <button id="btnFinalizar" class="btn" type="button">Finalizar compra</button>
+        <button id="btnVaciar" class="btn btn-borde" type="button">Vaciar carrito</button>
+      </div>
+      <p id="msgPago" role="status"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="oscuro">
+  <p>Vireo es una marca inventada para este proyecto. La imagen del vehículo es una ilustración.</p>
+  <p>Tienda de prueba: el pago aún no está conectado.</p>
+</footer>
+
+<div id="aviso" class="aviso" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
